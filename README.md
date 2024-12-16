@@ -69,3 +69,9 @@ SuppleHubは、**実際に効果のあったサプリ・プロテインを共有
 ### 画面遷移図
 Figma：https://www.figma.com/design/YfjhckMAA4QOLQYUShXbXG/SuppleHub-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&node-type=canvas&t=uYsBbisERXiNej5u-0
 [![Image from Gyazo](https://i.gyazo.com/5822607de891c2b555b5c6b5e1e8d111.png)](https://gyazo.com/5822607de891c2b555b5c6b5e1e8d111)
+
+---
+
+### ER図
+ER図 : https://dbdiagram.io/d/SupppleHub-675acad546c15ed4792a37b0
+[![Image from Gyazo](https://i.gyazo.com/d8793632d928a459f6302b249cb9b10c.png)](https://gyazo.com/d8793632d928a459f6302b249cb9b10c)
