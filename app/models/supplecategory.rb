@@ -1,0 +1,2 @@
+class Supplecategory < ApplicationRecord
+end
