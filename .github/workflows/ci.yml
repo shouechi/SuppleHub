@@ -5,7 +5,8 @@ on:
   push:
     branches: [ main ]
 
-scan_ruby:
+jobs:
+  scan_ruby:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +20,7 @@ scan_ruby:
           bundler-cache: true
 
       - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager --no-update-check
+        run: bin/brakeman --no-pager
 
   lint:
     runs-on: ubuntu-latest
