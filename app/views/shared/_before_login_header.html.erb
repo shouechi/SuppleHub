@@ -1,19 +1,24 @@
 <header>
-  <nav class="bg-[#98FB98] border-gray-200">
-    <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-      <%= link_to 'SuppleHub', "#", class: 'text-2xl font-semibold dark:text-white' %>
-      
-       <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 text-gray-400 hover:bg-gray-700 focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
-          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+  <nav class="navbar bg-[#98FB98]">
+    <div class="max-w-screen-xl w-full flex items-center justify-between mx-auto p-4">
+      <%= link_to 'SuppleHub', "#", class: 'text-2xl font-semibold text-white' %>
+      <!-- ナビゲーションリンク -->
+      <div class="dropdown md:hidden">
+        <label tabindex="0" class="btn btn-square btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
           </svg>
-       </button>
-
-      <div class="hidden md:flex space-x-4" id="navbar-default">
-        <%= link_to '投稿一覧', "#", class: 'py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:text-blue-700 text-white md:hover:text-blue-500' %>
-        <%= link_to '新規登録', "#", class: 'py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:text-blue-700 text-white md:hover:text-blue-500' %>
-        <%= link_to 'ログイン', "#", class: 'py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:text-blue-700 text-white md:hover:text-blue-500' %>
+        </label>
+        <ul tabindex="0" class="menu dropdown-content mt-3 shadow bg-base-100 rounded-box w-52">
+          <li><%= link_to '投稿一覧', "#" %></li>
+          <li><%= link_to '新規登録', "#" %></li>
+          <li><%= link_to 'ログイン', "#" %></li>
+        </ul>
+      </div>
+      <div class="hidden md:flex space-x-4">
+        <%= link_to '投稿一覧', "#", class: 'btn btn-link text-gray-900 dark:text-white' %>
+        <%= link_to '新規登録', "#", class: 'btn btn-link text-gray-900 dark:text-white' %>
+        <%= link_to 'ログイン', "#", class: 'btn btn-link text-gray-900 dark:text-white' %>
       </div>
     </div>
   </nav>
