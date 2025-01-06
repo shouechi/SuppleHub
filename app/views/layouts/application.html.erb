@@ -18,7 +18,11 @@
   </head>
 
   <body class="flex flex-col min-h-screen">
-    <%= render 'shared/before_login_header' %>
+    <% if user_signed_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>  
+    <% end %>
      <main class="flex-grow">
       <%= yield %>
     </main>
