@@ -4,7 +4,6 @@ class CreateSupplemanagers < ActiveRecord::Migration[7.2]
       t.string :supple_name, null: false
       t.integer :remainingdays, null: false
       t.references :user, null: false, foreign_key: true
-
       t.timestamps
     end
   end
