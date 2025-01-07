@@ -12,13 +12,13 @@
         <ul tabindex="0" class="menu dropdown-content mt-3 shadow bg-base-100 rounded-box w-52">
           <li><%= link_to '投稿一覧', "#" %></li>
           <li><%= link_to '新規登録', new_user_registration_path %></li>
-          <li><%= link_to 'ログイン', "#" %></li>
+          <li><%= link_to 'ログイン', user_session_path %></li>
         </ul>
       </div>
       <div class="hidden md:flex space-x-4">
         <%= link_to '投稿一覧', "#", class: 'btn btn-link text-gray-900 dark:text-white' %>
         <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-link text-gray-900 dark:text-white' %>
-        <%= link_to 'ログイン', "#", class: 'btn btn-link text-gray-900 dark:text-white' %>
+        <%= link_to 'ログイン', user_session_path, class: 'btn btn-link text-gray-900 dark:text-white' %>
       </div>
     </div>
   </nav>
