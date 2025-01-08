@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   resources :posts
 
   # Defines the root path route ("/")
-  root "posts#index"
+  devise_scope :user do
+    root 'user/registrations#new'
+  end
 end

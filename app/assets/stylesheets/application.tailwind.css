@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fade-out {
+    animation: fade 3s forwards; /* 3秒でフェードアウト */
+  }
+  
+  @keyframes fade {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }

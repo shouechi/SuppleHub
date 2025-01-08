@@ -10,7 +10,7 @@
           <li><%= link_to '投稿一覧', "#", class: 'hover:text-blue-500 text-white' %></li>
           <li><%= link_to 'サンプリ管理一覧', "#", class: 'hover:text-blue-500 text-white' %></li>
           <li><%= link_to 'プロフィール', "#", class: 'hover:text-blue-500 text-white' %></li>
-          <li><%= link_to 'ログアウト', "#", class: 'hover:text-blue-500 text-white' %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, class: 'hover:text-blue-500 text-white' %></li>
         </ul>
       </div>
       <div class="navbar-end lg:hidden">
