@@ -1,0 +1,33 @@
+<%# The container tag
+  - available local variables
+    current_page:  a page object for the currently displayed page
+    total_pages:   total number of pages
+    per_page:      number of items to fetch per page
+    remote:        data-remote
+    paginator:     the paginator that renders the pagination tags inside
+-%>
+<%= paginator.render do -%>
+  <nav class="flex items-center justify-center space-x-2" role="navigation" aria-label="pager">
+    <!-- 最初のページボタン -->
+    <% unless current_page.first? %>
+      <%= first_page_tag class: "px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" %>
+      <%= prev_page_tag class: "px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" %>
+    <% end %>
+
+    <!-- 各ページ番号 -->
+    <% each_page do |page| -%>
+      <% if page.display_tag? -%>
+        <%= page_tag page, class: "px-3 py-1 rounded #{'bg-blue-500 text-white' if page.current?} hover:bg-blue-600" %>
+      <% elsif !page.was_truncated? -%>
+        <%= gap_tag class: "px-3 py-1 text-gray-500" %>
+      <% end -%>
+    <% end -%>
+
+    <!-- 次のページボタン -->
+    <% unless current_page.last? %>
+      <%= next_page_tag class: "px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" %>
+      <%= last_page_tag class: "px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" %>
+    <% end %>
+  </nav>
+<% end -%>
+
