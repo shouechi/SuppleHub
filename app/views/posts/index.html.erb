@@ -1,1 +1,14 @@
-a
+<div class="mb-6 text-center">
+  <span class="text-3xl font-bold">投稿一覧</span>
+</div>
+
+ <div class="flex justify-end">
+  <%= link_to '＋投稿', new_post_path, class: 'btn bg-[#98FB98] text-light text-gray-900 dark:text-white mr-4' %>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+  <%= render 'shared/post' %>
+</div>
+
+<%= paginate @posts %>
+

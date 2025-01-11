@@ -1,0 +1,12 @@
+<% @posts.each do |post| %>
+    <div class="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
+      <div class="p-4">
+        <h2 class="text-lg font-bold text-gray-800">
+          <%= post.supplecategory.name %>
+        </h2>
+      </div>
+      <div class="bg-gray-100 p-3 text-right">
+        <%= link_to '詳細を見る', post_path(post), class: 'text-blue-500 hover:underline' %>
+      </div>
+    </div>
+  <% end %>
