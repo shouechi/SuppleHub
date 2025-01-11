@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-   sessions: 'user/sessions',
-   registrations: 'user/registrations'
+   sessions: "user/sessions",
+   registrations: "user/registrations"
  }
 
   devise_scope :user do
@@ -20,6 +20,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   devise_scope :user do
-    root 'user/registrations#new'
+    root "user/registrations#new"
   end
 end
