@@ -1,12 +1,18 @@
 <% @posts.each do |post| %>
-    <div class="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
-      <div class="p-4">
-        <h2 class="text-lg font-bold text-gray-800">
-          <%= post.supplecategory.name %>
-        </h2>
-      </div>
-      <div class="bg-gray-100 p-3 text-right">
-        <%= link_to '詳細を見る', post_path(post), class: 'text-blue-500 hover:underline' %>
-      </div>
+  <div class="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
+    <div>
+      <%= image_tag post.supple_image_url, class: "w-full h-72 object-cover" %>
     </div>
-  <% end %>
+    <div class="p-4">
+      <h2 class="text-lg font-bold text-gray-800">
+        <%= link_to post.supplecategory.name, post_path(post), class: 'text-blue-500 hover:underline' %>
+      </h2>
+    </div>
+    <div class="p-3 flex justify-end space-x-1">
+      <!-- 編集ボタン -->
+      <%= link_to '編集', edit_post_path(post), class: 'btn bg-[#98FB98] text-blue-500 hover:underline' %>
+      <!-- 削除ボタン -->
+      <%= button_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn bg-[#98FB98] text-red-500 hover:underline' %>
+    </div>
+  </div>
+<% end %>
