@@ -4,7 +4,7 @@
      <% if post.supple_image.present? %>
       <%= image_tag post.supple_image_url, class: "w-full h-72 object-cover" %>
      <% else %>
-      <%= image_tag "No_Image.png" %>
+      <%= image_tag "No_Image.png", class: "w-full h-72 object-cover" %>
      <% end %>
     </div>
     <div class="p-4">

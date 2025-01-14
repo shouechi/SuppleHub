@@ -1,0 +1,13 @@
+<%= search_form_for q, url: posts_path do |f| %>
+  <div class="mb-6 flex justify-center items-center space-x-4">
+    <!-- 効果または副作用の検索フィールド -->
+    <div class="w-full max-w-xl">
+      <%= f.search_field :effect_or_side_effect_cont, class: 'form-control w-full p-2 border border-gray-300 rounded-lg', placeholder: '効果または副作用を入力' %>
+    </div>
+
+    <div>
+      <%= f.submit '検索', class: 'btn btn-primary bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600' %>
+    </div>
+  </div>
+<% end %>
+
