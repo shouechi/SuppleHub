@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-    # ユーザー認証をすべてのアクションで実行。indexアクションを除く
-    before_action :authenticate_user!, except: [ :index ]
+    # ユーザー認証をすべてのアクションで実行。index,showアクションを除く
+    before_action :authenticate_user!, except: [ :index, :show ]
 
   def index
     @posts = Post.order(created_at: :desc).page(params[:page]).per(21)
