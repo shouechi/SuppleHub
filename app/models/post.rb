@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  belongs_to :supplecategory
+  belongs_to :supplecategory, optional: true
 
   validates :effect, presence: true
   validates :side_effect, presence: true

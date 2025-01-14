@@ -13,28 +13,56 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user # 現在のユーザーを関連付ける
-    # 新しいサプリカテゴリを作成
-    if params[:post][:supplecategory_id].present?
-      @supplecategory = Supplecategory.new(name: params[:post][:supplecategory_id])
 
-      if @supplecategory.save
-        @post.supplecategory_id = @supplecategory.id
-      else
+    # サプリメントカテゴリの処理
+    if params[:post][:supplecategory_id].present?
+      @supplecategory = Supplecategory.find_or_create_by(name: params[:post][:supplecategory_id])
+
+      unless @supplecategory.persisted?
         flash.now[:alert] = "カテゴリの作成に失敗しました"
         render :new, status: :unprocessable_entity
+        return
       end
+
+      @post.supplecategory_id = @supplecategory.id
     end
 
     if @post.save
       redirect_to posts_path, notice: "投稿が成功しました！"
     else
+      flash.now[:alert] = "投稿の作成に失敗しました"
+      Rails.logger.error @post.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity
     end
   end
 
+
   def edit
     @post = Post.find(params[:id])
   end
+
+  def update
+  @post = Post.find(params[:id])
+
+  # サプリメントカテゴリの処理
+  if params[:post][:supplecategory_id].present?
+    @supplecategory = Supplecategory.find_or_create_by(name: params[:post][:supplecategory_id])
+
+    unless @supplecategory.persisted?
+      flash.now[:alert] = "カテゴリの作成に失敗しました"
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  # 投稿の更新
+  if @post.update(post_params.merge(supplecategory_id: @supplecategory&.id))
+    redirect_to posts_path, notice: "投稿が成功しました！"
+  else
+    flash.now[:alert] = "投稿の更新に失敗しました"
+    render :edit, status: :unprocessable_entity
+  end
+end
+
 
 
   def show
