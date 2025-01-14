@@ -1,25 +1,29 @@
-<%= form_with(model: @post, method: :post, local: true, data: { turbo: false }) do |f| %>
-    <div class="mb-4">
-        <%= f.label :supplecategory_id, "サプリ名", class: "block text-gray-700 font-bold mb-2" %>
-        <%= f.text_field :supplecategory_id, class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-300" %>
-    </div>
+<%= form_with(model: @post, data: { turbo: false }) do |f| %>
+  <div class="mb-4">
+  <%= f.label :supplecategory_id, "サプリ名", class: "block text-gray-700 font-bold mb-2" %>
+  <%= f.text_field :supplecategory_id, value: @post.supplecategory.try(:name), class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-300" %>
 
-    <div class ="mb-4">
-        <%= f.label :effect, "効果", class: "block text-gray-700 font-bold mb-2" %>
-        <%= f.text_area :effect, class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-300" %>
-    </div>
+  </div>
 
-    <div class="mb-4">
-        <%= f.label :side_effect, "副作用", class: "block text-gray-700 font-bold mb-2" %>
-        <%= f.text_area :side_effect, class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-300" %>
-    </div>
+  <div class="mb-4">
+    <%= f.label :effect, "効果", class: "block text-gray-700 font-bold mb-2" %>
+    <%= f.text_area :effect, class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-300" %>
+  </div>
 
-    <div class>
-        <%= f.label :supple_image, "画像アップロード", class: "block text-gray-700 font-bold mb-2" %>
-        <%= f.file_field :supple_image, class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-300", accept: 'image/*' %>
-         <%= f.hidden_field :supple_image_cache %>
-    </div><div>
+  <div class="mb-4">
+    <%= f.label :side_effect, "副作用", class: "block text-gray-700 font-bold mb-2" %>
+    <%= f.text_area :side_effect, class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-300" %>
+  </div>
+
+  <div>
+    <%= f.label :supple_image, "画像アップロード", class: "block text-gray-700 font-bold mb-2" %>
+    <%= f.file_field :supple_image, class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-300", accept: 'image/*' %>
+    <%= f.hidden_field :supple_image_cache %>
+  </div>
+
+  <div>
     <%= f.submit "投稿", class: "w-full bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 focus:outline-none" %>
   </div>
 <% end %>
+
 
