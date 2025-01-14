@@ -2,8 +2,10 @@ class PostsController < ApplicationController
     # ユーザー認証をすべてのアクションで実行。index,showアクションを除く
     before_action :authenticate_user!, except: [ :index, :show ]
 
-  def index
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(21)
+   # app/controllers/posts_controller.rb
+   def index
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(21)
   end
 
   def new
@@ -64,7 +66,7 @@ class PostsController < ApplicationController
 end
 
   def show
-    @post = current_user.posts.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def destroy
