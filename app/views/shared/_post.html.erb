@@ -16,7 +16,7 @@
       <!-- 編集ボタン -->
       <%= link_to '編集', edit_post_path(post), class: 'btn bg-[#98FB98] text-blue-500 hover:underline' %>
       <!-- 削除ボタン -->
-      <%= button_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn bg-[#98FB98] text-red-500 hover:underline' %>
+      <%= button_to '削除', post_path(post), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn bg-[#98FB98] text-red-500 hover:underline' %>
     </div>
   </div>
 <% end %>

@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user = current_user # 現在のユーザーを関連付ける
+    @post.user = current_user # 現在のユーザーを関連付け
 
     # サプリメントカテゴリの処理
     if params[:post][:supplecategory_id].present?
@@ -38,11 +38,11 @@ class PostsController < ApplicationController
 
 
   def edit
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def update
-  @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
 
   # サプリメントカテゴリの処理
   if params[:post][:supplecategory_id].present?
@@ -56,17 +56,21 @@ class PostsController < ApplicationController
 
   # 投稿の更新
   if @post.update(post_params.merge(supplecategory_id: @supplecategory&.id))
-    redirect_to posts_path, notice: "投稿が成功しました！"
+    redirect_to posts_path, notice: "更新が成功しました！"
   else
     flash.now[:alert] = "投稿の更新に失敗しました"
     render :edit, status: :unprocessable_entity
   end
 end
 
-
-
   def show
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
+  end
+
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy
+    redirect_to posts_path, notice: "投稿を削除しました"
   end
 
   private
