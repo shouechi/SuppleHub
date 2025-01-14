@@ -20,13 +20,13 @@ class PostsController < ApplicationController
       if @supplecategory.save
         @post.supplecategory_id = @supplecategory.id
       else
-        flash.now[:alert] = 'カテゴリの作成に失敗しました'
+        flash.now[:alert] = "カテゴリの作成に失敗しました"
         render :new, status: :unprocessable_entity
       end
     end
 
     if @post.save
-      redirect_to posts_path, notice: '投稿が成功しました！'
+      redirect_to posts_path, notice: "投稿が成功しました！"
     else
       render :new, status: :unprocessable_entity
     end
