@@ -1,11 +1,7 @@
 <% @posts.each do |post| %>
   <div class="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
     <div>
-     <% if post.supple_image.present? %>
       <%= image_tag post.supple_image_url, class: "w-full h-72 object-cover" %>
-     <% else %>
-      <%= image_tag "No_Image.pang" %>
-     <% end %>
     </div>
     <div class="p-4">
       <h2 class="text-lg font-bold text-gray-800">
