@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        supplecategory_id: ""
+        effect: ""
+        side_effect: ""
+        supple_image: ""
+    errors:
+      models:
+        post:
+          attributes:
+            supplecategory_id:
+              blank: "サプリ名を選択してください"
+            effect:
+              blank: "効果を入力してください"
+            side_effect:
+              blank: "副作用を入力してください"
+            supple_image:
+              blank: "画像を選択してください"

@@ -44,7 +44,7 @@
   <!-- ボタン -->
   <div class="p-3 flex justify-end space-x-1">
     <%= link_to '編集', edit_post_path(@post), class: "btn bg-[#98FB98] text-blue-500 hover:underline" %>
-    <%= link_to '削除', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn bg-[#98FB98] text-red-500 hover:underline" %>
+    <%= link_to '削除', post_path(@post), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "btn bg-[#98FB98] text-red-500 hover:underline" %>
   </div>
   <div class="p-3 flex justify-center">
   <%= link_to '一覧へ戻る', posts_path, class: "bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 focus:outline-none" %>
