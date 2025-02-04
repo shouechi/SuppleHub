@@ -53,6 +53,12 @@ gem "carrierwave", "~> 3.0"
 # 検索専用
 gem "ransack"
 
+# AWS S3画像アップロード用
+gem "fog-aws"
+
+# .envファイル用
+gem "dotenv-rails"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
