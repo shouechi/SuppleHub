@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-   sessions: "user/sessions",
-   registrations: "user/registrations"
+   sessions: "users/sessions",
+   registrations: "users/registrations"
  }
 
   devise_scope :user do
@@ -18,8 +18,10 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   resources :posts
 
+  resources :users, only: %i[ show ]
+
   # Defines the root path route ("/")
   devise_scope :user do
-    root "user/registrations#new"
+    root "users/registrations#new"
   end
 end

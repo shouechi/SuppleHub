@@ -1,0 +1,13 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+  <div class="card w-96 bg-white shadow-xl rounded-xl p-6">
+    <div class="card-body text-center">
+
+      <h2 class="text-xl font-bold text-gray-800"><%= @user.name %></h2>
+      <p class="text-gray-500 text-sm"><%= @user.email %></p>
+
+      <div class="mt-4">
+        <%= link_to "プロフィールを編集", edit_user_registration_path, class: "btn btn-primary btn-sm w-full" %>
+      </div>
+    </div>
+  </div>
+</div>
