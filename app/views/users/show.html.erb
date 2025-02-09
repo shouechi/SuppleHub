@@ -5,9 +5,24 @@
       <h2 class="text-xl font-bold text-gray-800"><%= @user.name %></h2>
       <p class="text-gray-500 text-sm"><%= @user.email %></p>
 
-      <div class="mt-4">
-        <%= link_to "プロフィールを編集", edit_user_registration_path, class: "btn btn-primary btn-sm w-full" %>
+      <div class="mt-6">
+        <%= link_to "プロフィールを編集", edit_user_registration_path, class: "btn btn-primary btn-sm w-full mb-2" %>
+
+        <div class="border-t border-gray-300 my-4"></div>
+
+        <%= link_to user_registration_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当にアカウントを削除しますか？' }, 
+          class: "btn btn-danger btn-sm w-full flex items-center justify-center gap-2" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18"></path>
+            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            <path d="M10 11v6"></path>
+            <path d="M14 11v6"></path>
+            <path d="M4 6h16l-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6z"></path>
+          </svg>
+          アカウントを削除する
+        <% end %>
       </div>
+
     </div>
   </div>
 </div>
