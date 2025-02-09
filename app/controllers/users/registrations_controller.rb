@@ -25,9 +25,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    # 論理削除処理
+    soft_delete(current_user)
+    respond_with_navigational do
+      sign_out current_user
+      flash[:notice] = "アカウントを削除しました"
+      redirect_to root_path
+    end
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -70,4 +76,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def soft_delete(user)
+    # 同じメールアドレスでも登録できるように、 メールアドレスを“******_deleted_**********”に変更する
+    deleted_email = user.email + "_deleted_" + Time.current.to_i.to_s
+    user.assign_attributes(email: deleted_email, deleted_at: Time.current)
+    # 　通知メールをキャンセルする
+    user.skip_email_changed_notification!
+    user.save
+  end
 end
