@@ -73,6 +73,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  # 送信したメール内容確認
+  gem "letter_opener_web"
 end
 
 group :test do
