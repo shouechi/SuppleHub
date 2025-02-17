@@ -7,9 +7,15 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   # POST /resource/password
-  # def create
-  #   super
-  # end
+  def create
+    self.resource = resource_class.send_reset_password_instructions(resource_params)
+    if successfully_sent?(resource)
+      redirect_to after_sending_reset_password_instructions_path_for(resource_name)
+    else
+      flash[:alert] = "メールアドレスを確認してください" if is_navigational_format?
+      render :new
+    end
+  end
 
   # GET /resource/password/edit?reset_password_token=abcdef
   # def edit
