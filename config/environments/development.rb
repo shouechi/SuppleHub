@@ -41,8 +41,18 @@ Rails.application.configure do
   # caching is enabled.
   config.action_mailer.perform_caching = false
 
+  # mailerの設定
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
-
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    domain: "localhost",
+    port: 587,
+    user_name: ENV["MAILER_SENDER"],
+    password: ENV["MAILER_PASSWORD"],
+    authentication: "plain",
+    enable_starttls_auto: true
+  }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

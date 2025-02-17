@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
    sessions: "users/sessions",
-   registrations: "users/registrations"
+   registrations: "users/registrations",
+   passwords: "users/passwords"
  }
 
   devise_scope :user do
@@ -23,5 +24,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   devise_scope :user do
     root "users/registrations#new"
+  end
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 end
