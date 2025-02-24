@@ -1,11 +1,24 @@
 class PostsController < ApplicationController
-    # ユーザー認証をすべてのアクションで実行。index,showアクションを除く
-    before_action :authenticate_user!, except: [ :index, :show ]
+  # ユーザー認証をすべてのアクションで実行。index,showアクションを除く
+  before_action :authenticate_user!, except: [ :index, :show ]
 
-   # app/controllers/posts_controller.rb
-   def index
+  # app/controllers/posts_controller.rb
+  def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(21)
+    @posts = @q.result.includes(:supplecategory).distinct.page(params[:page]).per(10)
+  end
+
+  def autocomplete
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).limit(10)
+
+    render json: @posts.map { |post|
+      {
+        id: post.id,
+        effect: post.effect,
+        side_effect: post.side_effect
+      }
+    }
   end
 
   def new
