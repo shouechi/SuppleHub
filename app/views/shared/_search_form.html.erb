@@ -1,13 +1,16 @@
 <%= search_form_for q, url: posts_path do |f| %>
   <div class="mb-6 flex justify-center items-center space-x-4">
-    <!-- 効果または副作用の検索フィールド -->
-    <div class="w-full max-w-xl">
-      <%= f.search_field :effect_or_side_effect_cont, class: 'form-control w-full p-2 border border-gray-300 rounded-lg', placeholder: '効果または副作用を入力' %>
+    <!-- カテゴリ選択セレクトボックス -->
+    <div class="w-1/7">
+      <%= f.select :supplecategory_id_eq, Supplecategory.all.pluck(:name, :id), { include_blank: "カテゴリを選択" }, class: "select select-bordered w-full" %>
+    </div>
+    <div class="w-full max-w-xl relative" data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_posts_path %>" data-action="click@window->autocomplete#clickOutside">
+      <%= f.search_field :effect_or_side_effect_cont, class: 'input input-bordered w-full', placeholder: '効果または副作用を入力', data: { action: "input->autocomplete#search" } %>
+      <ul data-autocomplete-target="results" class="menu bg-base-100 w-full mt-1 shadow-lg rounded-box border border-base-300" style="position: absolute; max-height: 200px; overflow-y: auto; display: none; z-index: 50;"></ul>
     </div>
 
     <div>
-      <%= f.submit '検索', class: 'btn btn-primary bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600' %>
+      <%= f.submit '検索', class: 'btn btn-primary' %>
     </div>
   </div>
 <% end %>
-
