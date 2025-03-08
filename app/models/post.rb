@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :supplecategory, optional: true
+  has_many :comments, dependent: :destroy
 
   validates :supplecategory_id, presence: { message: "サプリ名を入力してください" }
   validates :effect, presence: { message: "本文を入力してください" }
