@@ -23,7 +23,7 @@
         <% if @notifications.exists? %>
           <div class="space-y-2">
             <% @notifications.each do |notification| %>
-             <%= render 'shared/notification', locals: { notification: notification } %>
+             <%= render 'shared/notification', notification: notification %>
             <% end %>
           </div>
         <% else %>
