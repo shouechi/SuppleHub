@@ -27,12 +27,6 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[ show ]
 
-  resources :notifications, only: %i[ index destroy ] do
-    collection do
-      delete :destroy_all
-    end
-  end
-
   # Defines the root path route ("/")
   devise_scope :user do
     root "users/registrations#new"
