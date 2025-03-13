@@ -10,7 +10,6 @@ class CommentsController < ApplicationController
         comment: @comment.as_json(include: :user),
         user: @comment.user.name
       }
-      @post.create_notification_comment!(current_user, @comment.id)
     else
       redirect_to post_path(@post), alert: "コメントの投稿に失敗しました。"
     end
