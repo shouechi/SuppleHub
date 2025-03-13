@@ -22,7 +22,7 @@
         
         <% if @notifications.exists? %>
           <div class="space-y-2">
-            <%= render 'shared/notification' %>
+            <%= render @notifications %>
           </div>
         <% else %>
           <div class="text-center py-8 opacity-70 translatable-text">
