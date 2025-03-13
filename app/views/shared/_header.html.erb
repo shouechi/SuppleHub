@@ -1,35 +1,82 @@
 <header>
-  <nav class="bg-[#98FB98]">
-    <div class="navbar max-w-full mx-auto px-4">
-      <!-- ロゴ -->
-      <div class="navbar-start">
-        <%= link_to 'SuppleHub', posts_path, class: 'text-2xl text-white font-bold' %>
-      </div>
-      <!-- ナビゲーションリンク -->
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal space-x-4">
-          <li><%= link_to '投稿一覧', posts_path, class: 'text-white hover:text-blue-500' %></li>
-          <li><%= link_to 'サプリ管理一覧', "#", class: 'text-white hover:text-blue-500' %></li>
-          <li><%= link_to 'プロフィール', user_path(current_user), class: 'text-white hover:text-blue-500' %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, class: 'text-white hover:text-blue-500' %></li>
+  <div class="navbar bg-[#98FB98] text-gray-800 shadow-md justify-end">
+    <!-- ロゴ部分（右寄せレイアウトでも左に配置） -->
+    <div class="navbar-start">
+      <%= link_to posts_path, class: 'btn btn-ghost normal-case text-xl font-bold' do %>
+        SuppleHub
+      <% end %>
+    </div>
+    
+    <!-- 右寄せのスペースを確保 -->
+    <div class="navbar-center flex-grow"></div>
+
+    <!-- 通知ボタン -->
+    <div class="dropdown dropdown-end">
+      <%= link_to notifications_path, class: "relative btn btn-ghost btn-circle" do %>
+        <div class="indicator">
+          <!-- カスタムベルアイコン -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+            
+          <!-- 未読通知がある場合のみ表示 -->
+          <% if unchecked_notifications.any? %>
+            <span class="absolute inset-0 rounded-full animate-ping opacity-25 bg-secondary" style="animation-duration: 3s;"></span>
+            <span class="indicator-item badge badge-secondary badge-sm">
+              <%= unchecked_notifications.count %>
+            </span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    
+    <!-- デスクトップ用ナビゲーション（右寄せ） -->
+    <div class="hidden lg:flex items-center gap-1 pr-2">
+      <ul class="menu menu-horizontal px-1 gap-1">
+        <li><%= link_to '投稿一覧', posts_path, class: 'btn btn-ghost' %></li>
+        <li><%= link_to 'サプリ管理一覧', "#", class: 'btn btn-ghost' %></li>
+      </ul>
+      
+      <!-- ユーザーメニュー -->
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn btn-ghost btn-circle avatar placeholder">
+          <div class="bg-neutral-focus text-neutral-content rounded-full w-10">
+            <span><%= current_user.name.first.upcase %></span>
+          </div>
+        </label>
+        <ul tabindex="0" class="menu dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-base-content">
+          <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete } %></li>
+          <li><%= link_to 'プロフィール', user_path(current_user) %></li>
         </ul>
       </div>
-      <!-- ハンバーガーメニュー -->
-      <div class="navbar-end lg:hidden">
-        <div class="dropdown dropdown-end">
-          <label tabindex="0" class="btn btn-ghost">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </label>
-          <ul tabindex="0" class="menu dropdown-content mt-2 shadow bg-base-100 rounded-box w-52">
-            <li><%= link_to '投稿一覧', posts_path %></li>
-            <li><%= link_to 'サプリ管理一覧', "#" %></li>
-            <li><%= link_to "プロフィール", user_path(current_user) %></li>
-            <li><%= link_to 'ログアウト', destroy_user_session_path %></li>
-          </ul>
-        </div>
+    </div>
+    
+    <!-- モバイル用ハンバーガーメニュー（右寄せ） -->
+    <div class="navbar-end lg:hidden">
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn btn-ghost btn-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </label>
+        <ul tabindex="0" class="menu dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-base-content">
+          <li>
+            <%= link_to notifications_path, class: "flex items-center gap-2" do %>
+              <i class="fas fa-bell"></i> 通知
+              <% if unchecked_notifications.any? %>
+                <span class="badge badge-secondary badge-sm"><%= unchecked_notifications.count %></span>
+              <% end %>
+            <% end %>
+          </li>
+          <li><%= link_to '投稿一覧', posts_path %></li>
+          <li><%= link_to 'サプリ管理一覧', "#" %></li>
+          <li><%= link_to 'プロフィール', user_path(current_user) %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete } %></li>
+        </ul>
       </div>
     </div>
-  </nav>
+  </div>
 </header>
+
