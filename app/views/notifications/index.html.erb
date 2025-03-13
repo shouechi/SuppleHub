@@ -1,0 +1,36 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-2xl mx-auto">
+    <div class="card bg-base-100 shadow-lg">
+      <div class="card-body">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="card-title">
+            <i class="fa-solid fa-bell"></i>
+            <span class="translatable-text">通知</span>
+          </h2>
+          
+          <% if @notifications.exists? %>
+            <%= link_to destroy_all_notifications_path, 
+                data: { turbo_method: :delete, turbo_confirm: '本当に全ての通知を削除しますか？' }, 
+                class: "btn btn-sm btn-outline" do %>
+              <i class="fa-solid fa-trash-can mr-1"></i>
+              <span class="translatable-text">通知削除</span>
+            <% end %>
+          <% end %>
+        </div>
+        
+        <div class="divider my-0"></div>
+        
+        <% if @notifications.exists? %>
+          <div class="space-y-2">
+            <%= render @notifications %>
+          </div>
+        <% else %>
+          <div class="text-center py-8 opacity-70 translatable-text">
+            通知はありません
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

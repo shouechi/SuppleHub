@@ -1,0 +1,19 @@
+<div class="card bg-base-100 shadow-sm mb-4">
+  <div class="card-body p-4">
+    <div class="flex items-start gap-3">
+      <div class="avatar placeholder">
+        <div class="bg-primary text-primary-content rounded-full w-10">
+          <span><%= notification.visiter.name.first %></span>
+        </div>
+      </div>
+      <div class="flex-1">
+        <p class="text-sm translatable-text">
+          <span class="font-medium"><%= notification.visiter.name %></span>さんが
+          <%= link_to "あなたの投稿したレビュー", post_path(notification.post_id), class: "link link-primary" %>にコメントしました。
+          <span class="text-xs text-opacity-70">(<%= time_ago_in_words(notification.created_at) %>前)</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
