@@ -22,7 +22,9 @@
         
         <% if @notifications.exists? %>
           <div class="space-y-2">
-            <%= render 'shared/notification', notification: notification %>
+            <% @notifications.each do |notification| %>
+             <%= render 'shared/notification', notification: notification %>
+            <% end %>
           </div>
         <% else %>
           <div class="text-center py-8 opacity-70 translatable-text">
