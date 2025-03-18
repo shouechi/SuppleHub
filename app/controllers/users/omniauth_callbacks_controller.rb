@@ -18,7 +18,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
     else
       # 失敗時の処理
-      session["devise.#{provider}_data"] = request.env["omniauth.auth"].except('extra')
+      session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
       redirect_to new_user_registration_url, alert: "#{provider}認証に失敗しました。エラー: #{@user.errors.full_messages.join(', ')}"
     end
   end
