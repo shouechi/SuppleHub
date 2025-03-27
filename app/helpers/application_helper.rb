@@ -30,10 +30,11 @@ module ApplicationHelper
         local: "ja_JP"
       },
       twitter: {
-        card: 'summary_large_image', # Twitterで表示する場合は大きいカードに変更
-        site: '@supplehub',
-        image: image_url('ogp.png')
+        card: "summary_large_image", # Twitterで表示する場合は大きいカードに変更
+        site: "@",
+        image: image_url("ogp.png")
       }
     }
   end
 end
+it
