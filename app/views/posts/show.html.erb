@@ -41,6 +41,12 @@
     </p>
   </div>
 
+
+  <%= link_to "https://x.com/share?url=#{ request.url }&text=【SuppleHub】%0aSuppleHubへ投稿しました!%0a%0a", target: :_blank, rel: "noopener noreferrer" do %>
+    <span>Xで共有</span>
+  <% end %>
+
+  
   <!-- ボタン -->
   <div class="p-3 flex justify-end space-x-1">
     <%= link_to '編集', edit_post_path(@post), class: "btn bg-[#98FB98] text-blue-500 hover:underline" %>
