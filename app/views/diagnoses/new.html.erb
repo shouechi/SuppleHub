@@ -1,0 +1,65 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-2xl mx-auto">
+    <div class="card bg-base-100 shadow-lg">
+      <div class="card-body">
+        <% if @assessment_result.present? %>
+          <!-- 診断結果表示 -->
+          <h2 class="card-title text-2xl font-bold text-center mb-6">
+            <span class="text-primary">診断結果</span>
+          </h2>
+          
+          <div class="divider"></div>
+          
+          <div class="bg-base-200 p-6 rounded-lg">
+            <p class="text-lg leading-relaxed whitespace-pre-line"><%= @assessment_result %></p>
+          </div>
+          
+          <div class="card-actions justify-between mt-6">
+            <%= link_to "新しい診断を行う", new_diagnosis_path, class: "btn btn-outline" %>
+          </div>
+        <% else %>
+          <!-- 診断フォーム -->
+          <h1 class="card-title text-2xl font-bold text-center mb-6">
+            <span class="text-primary">サプリメント診断</span>
+          </h1>
+          
+          <p class="text-center text-base-content/70 mb-6">
+            あなたの健康状態や生活習慣に基づいて、最適なサプリメントをご提案します。
+            以下の質問にできるだけ詳しくお答えください。
+          </p>
+          
+          <%= form_with(url: diagnoses_path, method: :post, local: true, class: "space-y-6") do |form| %>
+            <div class="form-control">
+              <%= form.label :health_condition, '健康状態', class: "label font-medium" %>
+              <div class="label">
+                <span class="label-text-alt">現在の健康状態や気になる症状、既往歴などをご記入ください</span>
+              </div>
+              <%= form.text_area :health_condition, required: true, class: "textarea textarea-bordered h-24", placeholder: "例：疲れやすい、肩こりがある、花粉症持ち、など" %>
+            </div>
+            
+            <div class="form-control">
+              <%= form.label :living_situation, '生活状況', class: "label font-medium" %>
+              <div class="label">
+                <span class="label-text-alt">食生活、運動習慣、睡眠時間、ストレス状況などをご記入ください</span>
+              </div>
+              <%= form.text_area :living_situation, required: true, class: "textarea textarea-bordered h-24", placeholder: "例：野菜不足、デスクワーク中心、睡眠6時間程度、など" %>
+            </div>
+            
+            <div class="form-control">
+              <%= form.label :sense_of_purpose, '目的意識', class: "label font-medium" %>
+              <div class="label">
+                <span class="label-text-alt">サプリメントに期待する効果や目標をご記入ください</span>
+              </div>
+              <%= form.text_area :sense_of_purpose, required: true, class: "textarea textarea-bordered h-24", placeholder: "例：疲労回復したい、免疫力を高めたい、集中力を上げたい、など" %>
+            </div>
+            
+            <div class="form-control mt-8">
+              <%= form.submit '診断する', class: "btn btn-primary w-full" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

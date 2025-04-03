@@ -71,7 +71,7 @@
             <% end %>
           </li>
           <li><%= link_to '投稿一覧', posts_path %></li>
-          <li><%= link_to 'サプリ管理一覧', "#" %></li>
+          <li><%= link_to 'サプリ診断', new_diagnosis_path %></li>
           <li><%= link_to 'プロフィール', user_path(current_user) %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete } %></li>
         </ul>
