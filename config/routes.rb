@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :diagnoses, only: %i[ new create ]
+
   # Defines the root path route ("/")
   devise_scope :user do
     root "users/registrations#new"
