@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
   resources :diagnoses, only: %i[ new create ]
 
+  get "static_pages/privacy_policy"
+
   # Defines the root path route ("/")
   devise_scope :user do
     root "users/registrations#new"
