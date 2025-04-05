@@ -114,4 +114,7 @@ Rails.application.configure do
   authentication: "plain",
   enable_starttls_auto: true
   }
+  #独自ドメインホストの許可
+  config.hosts << "www.supplehub.jp"
+  config.hosts << "supplehub.jp"
 end
