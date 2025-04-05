@@ -117,4 +117,5 @@ Rails.application.configure do
   # 独自ドメインホストの許可
   config.hosts << "www.supplehub.jp"
   config.hosts << "supplehub.jp"
+  config.hosts << "supplehub.onrender.com"
 end
