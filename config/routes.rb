@@ -38,11 +38,9 @@ Rails.application.routes.draw do
 
   get "static_pages/privacy_policy"
   get "static_pages/terms"
+  root "static_pages#top"
 
   # Defines the root path route ("/")
-  devise_scope :user do
-    root "users/registrations#new"
-  end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
