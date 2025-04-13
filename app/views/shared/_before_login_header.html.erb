@@ -1,31 +1,33 @@
-<header class="relative z-20 bg-[#90EE90] shadow-md">
-  <nav class="container mx-auto px-4 py-3">
-    <div class="flex items-center justify-between">
+<nav class="bg-[#98FB98]">
+    <div class="navbar max-w-full mx-auto px-4">
       <!-- ロゴ -->
-      <div class="flex-shrink-0">
-        <%= link_to 'SuppleHub', posts_path, class: 'text-2xl font-bold text-[#2E7D32] tracking-tight hover:text-[#1B5E20] transition-colors' %>
+      <div class="navbar-start">
+        <%= link_to 'SuppleHub', posts_path, class: 'text-2xl text-white font-bold' %>
       </div>
-
-      <!-- デスクトップナビゲーション -->
-      <div class="hidden lg:flex items-center space-x-1">
-        <%= link_to '投稿一覧', posts_path, class: 'px-4 py-2 rounded-lg text-[#2E7D32] hover:bg-[#7CFC00]/30 hover:text-[#1B5E20] transition-colors' %>
-        <%= link_to '新規登録', new_user_registration_path, class: 'px-4 py-2 rounded-lg text-[#2E7D32] hover:bg-[#7CFC00]/30 hover:text-[#1B5E20] transition-colors' %>
-        <%= link_to 'ログイン', user_session_path, class: 'ml-2 px-4 py-2 bg-white text-[#2E7D32] rounded-lg font-medium hover:bg-[#F1F8E9] hover:text-[#1B5E20] transition-colors border border-[#81C784]' %>
-      </div>
-
-      <!-- モバイルメニュー（DaisyUI dropdown） -->
-      <div class="dropdown dropdown-end lg:hidden">
-        <label tabindex="0" class="btn btn-ghost text-[#2E7D32] hover:bg-[#7CFC00]/30">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </label>
-        <ul tabindex="0" class="dropdown-content menu p-2 mt-2 shadow-lg bg-white rounded-box w-52 z-30">
-          <li><%= link_to '投稿一覧', posts_path, class: 'text-[#2E7D32] hover:bg-[#F1F8E9]' %></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: 'text-[#2E7D32] hover:bg-[#F1F8E9]' %></li>
-          <li><%= link_to 'ログイン', user_session_path, class: 'text-[#2E7D32] hover:bg-[#F1F8E9]' %></li>
+      <!-- ナビゲーションリンク -->
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal space-x-4">
+          <li><%= link_to '投稿一覧', posts_path %></li>
+          <li><%= link_to '新規登録', new_user_registration_path %></li>
+          <li><%= link_to 'ログイン', user_session_path %></li>
         </ul>
+      </div>
+      <!-- ハンバーガーメニュー -->
+      <div class="navbar-end lg:hidden">
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </label>
+          <ul tabindex="0" class="menu dropdown-content mt-2 shadow bg-base-100 rounded-box w-52">
+            <li><%= link_to '投稿一覧', posts_path %></li>
+            <li><%= link_to '新規登録', new_user_registration_path %></li>
+            <li><%= link_to 'ログイン', user_session_path %></li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
 </header>
+
