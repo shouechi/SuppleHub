@@ -1,39 +1,87 @@
-<%= form_with(model: @post, data: { turbo: false }) do |f| %>
+<div class="max-w-md mx-auto p-4 md:p-6 bg-base-100 rounded-xl shadow-lg">
+  <div class="text-center mb-6">
+    <h2 class="text-2xl font-bold">サプリメント投稿</h2>
+  </div>
 
-  <!-- エラーメッセージまとめて表示 -->
-  <% if @post.errors.any? %>
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
-      <ul>
-        <% @post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <%= form_with(model: @post, data: { turbo: false }, class: "space-y-4") do |f| %>
+    <!-- エラーメッセージ -->
+    <% if @post.errors.any? %>
+      <div class="alert alert-error shadow-lg">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <div>
+            <h3 class="font-bold">入力エラー</h3>
+            <ul class="list-disc pl-5 mt-1">
+              <% @post.errors.full_messages.each do |message| %>
+                <li class="text-sm"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- サプリ名 -->
+    <div class="form-control">
+      <%= f.label :supplecategory_id, class: "label" do %>
+        <span class="label-text font-medium">サプリ名</span>
+      <% end %>
+      <%= f.text_field :supplecategory_id, value: @post.supplecategory.try(:name), 
+                       class: "input input-bordered w-full", 
+                       placeholder: "サプリメント名を入力" %>
+    </div>
+
+    <!-- 効果 -->
+    <div class="form-control">
+      <%= f.label :effect, class: "label" do %>
+        <span class="label-text font-medium">効果・特徴</span>
+      <% end %>
+      <%= f.text_area :effect, class: "textarea textarea-bordered h-24", 
+                     placeholder: "このサプリメントの効果や特徴を詳しく記入してください" %>
+    </div>
+
+    <!-- 副作用 -->
+    <div class="form-control">
+      <%= f.label :side_effect, class: "label" do %>
+        <span class="label-text font-medium">副作用・注意点</span>
+      <% end %>
+      <%= f.text_area :side_effect, class: "textarea textarea-bordered h-20", 
+                     placeholder: "副作用や使用上の注意点があれば記入してください" %>
+    </div>
+
+    <!-- 画像アップロード -->
+    <div class="form-control">
+      <%= f.label :supple_image, class: "label" do %>
+        <span class="label-text font-medium">画像アップロード</span>
+      <% end %>
+      
+      <div class="border-2 border-dashed border-base-300 rounded-lg p-6 text-center cursor-pointer hover:bg-base-200 transition-colors">
+        <label for="post_supple_image" class="cursor-pointer flex flex-col items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-base-content/50 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <p class="text-base-content/70">クリックして画像を選択</p>
+          <p class="text-xs text-base-content/50 mt-1">JPG, PNG, GIF (最大5MB)</p>
+          
+          <%= f.file_field :supple_image, class: "hidden", accept: 'image/*', 
+                          onchange: "document.getElementById('file-name').textContent = this.files[0].name; document.getElementById('file-preview').classList.remove('hidden')" %>
+        </label>
+        
+        <div id="file-preview" class="hidden mt-3 text-sm">
+          <span class="badge badge-info gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            <span id="file-name">ファイル名</span>
+          </span>
+        </div>
+      </div>
+      
+      <%= f.hidden_field :supple_image_cache %>
+    </div>
+    
+    <div class="form-control mt-6">
+      <%= f.submit "投稿する", class: "btn btn-primary w-full" %>
     </div>
   <% end %>
-
-  <div class="mb-4">
-    <%= f.label :supplecategory_id, "サプリ名", class: "block text-gray-700 font-bold mb-2" %>
-    <%= f.text_field :supplecategory_id, value: @post.supplecategory.try(:name), class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-300" %>
-  </div>
-
-  <div class="mb-4">
-    <%= f.label :effect, "効果", class: "block text-gray-700 font-bold mb-2" %>
-    <%= f.text_area :effect, class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-300" %>
-  </div>
-
-  <div class="mb-4">
-    <%= f.label :side_effect, "副作用", class: "block text-gray-700 font-bold mb-2" %>
-    <%= f.text_area :side_effect, class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-300" %>
-  </div>
-
-  <div>
-    <%= f.label :supple_image, "画像アップロード", class: "block text-gray-700 font-bold mb-2" %>
-    <%= f.file_field :supple_image, class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-300", accept: 'image/*' %>
-    <%= f.hidden_field :supple_image_cache %>
-  </div>
-
-  <div>
-    <%= f.submit "投稿", class: "w-full bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 focus:outline-none" %>
-  </div>
-
-<% end %>
+</div>
