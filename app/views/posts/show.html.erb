@@ -71,7 +71,7 @@
           一覧へ戻る
         <% end %>
         
-        <% if current_user.id == @post.user_id %>
+        <% if user_signed_in? && current_user.id == @post.user.id %>
           <div class="flex gap-2">
             <%= link_to edit_post_path(@post), class: 'btn btn-outline btn-primary' do %>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
