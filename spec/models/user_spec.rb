@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { bundle(:user) }
+  let(:user) { build(:user) }
 
-  describ 'ユーザー作成バリデーション' do
+  describe 'ユーザー作成バリデーション' do
     context "成功した場合" do
       it "ユーザーが正常に作成されること" do
         expect(user).to be_valid
@@ -33,6 +33,7 @@ RSpec.describe User, type: :model do
         user.email = "invalid_email"
         expect(user).not_to be_valid
         expect(user.errors[:email]).to include("Eメールは不正な値です")
+      end
 
       it "パスワードが空の場合、無効であること" do
         user.password = nil
@@ -52,12 +53,6 @@ RSpec.describe User, type: :model do
         expect(user).not_to be_valid
         expect(user.errors[:password]).to include("パスワードは6文字以上で入力してください")
       end
-
-
     end
-
-
   end
-
-
 end

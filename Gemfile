@@ -87,9 +87,8 @@ group :development, :test do
   # rspec専用
   gem "rspec-rails"
   gem "factory_bot_rails"
-  gem 'capybara'
-  gem 'faker'
-
+  gem "capybara"
+  gem "faker"
 end
 
 group :development do
