@@ -1,25 +1,31 @@
-<h2>Change your password</h2>
+<div class="flex justify-center items-center min-h-screen bg-base-200 px-4">
+  <div class="card w-full max-w-sm bg-base-100 shadow-md">
+    <div class="card-body p-4 sm:p-6">
+      <h2 class="text-lg font-bold text-center mb-4">パスワード変更</h2>
+      
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "space-y-3" }, data: { turbo: false }) do |f| %>
+        <%= render "users/shared/error_messages", resource: resource %>
+        <%= f.hidden_field :reset_password_token %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+        <div class="form-control">
+          <%= f.label :password, "新しいパスワード", class: "label-text text-sm mb-1" %>
+          <% if @minimum_password_length %>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-base-content/60"><%= @minimum_password_length %>文字以上</span>
+            </div>
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "input input-bordered input-sm w-full mt-1", placeholder: "••••••" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+        <div class="form-control">
+          <%= f.label :password_confirmation, "新しいパスワード（確認）", class: "label-text text-sm mb-1" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-bordered input-sm w-full", placeholder: "••••••" %>
+        </div>
+
+        <div class="form-control mt-4">
+          <%= f.submit "パスワードを変更する", class: "btn btn-primary btn-sm w-auto mx-auto px-4" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
