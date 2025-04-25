@@ -48,7 +48,7 @@ gem "devise-i18n-views"
 gem "kaminari"
 
 # 画像アップロード
-gem "carrierwave", "~> 3.0"
+gem "carrierwave", "~> 3.1"
 
 # 検索専用
 gem "ransack"
