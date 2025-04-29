@@ -17,20 +17,20 @@ module ApplicationHelper
       reverse: true,
       charset: "utf-8",
       description: "supplehubはサプリメントを共有できるサービスです。サプリメントの効果だけなく副作用も知ることができます。",
-      keywords: "サプリメント,効果,副作用",
-      canonical: "https://supplehub.onrender.com",
+      keywords: "サプリメント,効果,副作用,筋トレ",
+      canonical: request.original_url,
       separator: "|",
       og: {
         site_name: :site,
         title: :title,
         description: :description,
         type: "website",
-        url: "https://supplehub.onrender.com/",
+        url: request.original_url,
         image: image_url("ogp.png"),
         local: "ja_JP"
       },
       twitter: {
-        card: "summary_large_image", # Twitterで表示する場合は大きいカードに変更
+        card: "summary_large_image",
         site: "@",
         image: image_url("ogp.png")
       }
