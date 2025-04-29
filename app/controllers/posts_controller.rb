@@ -82,6 +82,7 @@ end
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
+    set_meta_tags(set_post_meta_tags)
   end
 
   def destroy
@@ -91,6 +92,23 @@ end
   end
 
   private
+
+  def set_post_meta_tags
+    set_meta_tags = {
+      title: @post.supplecategory.name,
+      description: @post.effect,
+      image: @post.supple_image.url,
+      og: {
+        title: @post.supplecategory.name,
+        description: @post.effect,
+        iamge: @post.supple_image.url
+      },
+      twitter: {
+        card: "summary_large_image",
+        image: @post.supple_image.url
+      }
+    }
+  end
 
   def post_params
     params.require(:post).permit(:supplecategory_id, :effect, :side_effect, :supple_image, :supple_image_cache)

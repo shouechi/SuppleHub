@@ -5,7 +5,7 @@
     </h1>
     
     <!-- シェアボタン -->
-    <%= link_to "https://x.com/share?url=#{request.url}&text=【SuppleHub】%0aSuppleHubへ投稿しました!%0a%0a",
+    <%= link_to "https://x.com/intent/tweet?url=#{CGI.escape(request.url)}&text=#{CGI.escape("【SuppleHub】\n#{@post.supplecategory.name}を投稿しました！\n#{@post.effect}")}",
                 target: :_blank,
                 rel: "noopener noreferrer",
                 class: "btn btn-xs gap-1 bg-[#111319] text-white hover:scale-105 transition-transform" do %>
