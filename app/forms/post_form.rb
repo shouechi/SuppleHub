@@ -16,7 +16,7 @@ class PostForm
   validates :side_effect, presence: { message: "本文を入力してください" }
   validates :supple_image, presence: { message: "画像を選択してください" }
 
-  #モデルからの属性を取得するためのメソッド
+  # モデルからの属性を取得するためのメソッド
   def initialize(attributes = {})
     @post = attributes.delete(:post)
     super(attributes)
@@ -35,7 +35,7 @@ class PostForm
       false
     end
   end
-  #サプリカテゴリを取得するメソッド
+  # サプリカテゴリを取得するメソッド
   def supplecategory
     Supplecategory.find_by(id: supplecategory_id) if supplecategory_id.present?
   end
