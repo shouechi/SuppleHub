@@ -22,16 +22,16 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = PostForm.new
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user = current_user # 現在のユーザーを関連付け
+    @post = PostForm.new(post_params)
+    @post.user_id = current_user.id # 現在のユーザーを関連付け
 
     # サプリメントカテゴリの処理
-    if params[:post][:supplecategory_id].present?
-      @supplecategory = Supplecategory.find_or_create_by(name: params[:post][:supplecategory_id])
+    if params[:post_form][:supplecategory_id].present?
+      @supplecategory = Supplecategory.find_or_create_by(name: params[:post_form][:supplecategory_id])
 
       unless @supplecategory.persisted?
         flash.now[:alert] = "カテゴリの作成に失敗しました"
@@ -111,6 +111,6 @@ end
   end
 
   def post_params
-    params.require(:post).permit(:supplecategory_id, :effect, :side_effect, :supple_image, :supple_image_cache)
+    params.require(:post_form).permit(:supplecategory_id, :effect, :side_effect, :supple_image, :supple_image_cache)
   end
 end
