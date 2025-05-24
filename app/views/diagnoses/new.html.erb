@@ -54,7 +54,7 @@
             </div>
             
             <div class="form-control mt-8">
-              <%= form.submit '診断する', class: "btn btn-primary w-full" %>
+              <%= form.submit '診断する', class: "btn btn-primary w-full", data: { action: "click->loading#show" } %>
             </div>
           <% end %>
         <% end %>
