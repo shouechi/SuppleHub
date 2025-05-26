@@ -8,10 +8,10 @@
 
       <!-- デスクトップナビゲーション -->
       <div class="hidden lg:flex items-center space-x-1">
-        <%= link_to '投稿一覧', posts_path, class: 'px-4 py-2 rounded-lg text-[#2E7D32] hover:bg-[#7CFC00]/30 hover:text-[#1B5E20] transition-colors', data: { action: "click->loding#show" } %>
-        <%= link_to '新規登録', new_user_registration_path, class: 'px-4 py-2 rounded-lg text-[#2E7D32] hover:bg-[#7CFC00]/30 hover:text-[#1B5E20] transition-colors', data: { action: "click->loding#show" } %>
-        <%= link_to 'ログイン', user_session_path, class: 'ml-2 px-4 py-2 bg-white text-[#2E7D32] rounded-lg font-medium hover:bg-[#F1F8E9] hover:text-[#1B5E20] transition-colors border border-[#81C784]', data: { action: "click->loding#show" } %>
-        <%= link_to 'サプリ診断', new_diagnosis_path, class: 'flex items-center gap-2 py-2 hover:bg-[#F1F8E9] rounded-md transition-colors duration-150', data: { action: "click->loding#show" }%>
+        <%= link_to '投稿一覧', posts_path, class: 'px-4 py-2 rounded-lg text-[#2E7D32] hover:bg-[#7CFC00]/30 hover:text-[#1B5E20] transition-colors', data: { action: "click->loading#show" } %>
+        <%= link_to '新規登録', new_user_registration_path, class: 'px-4 py-2 rounded-lg text-[#2E7D32] hover:bg-[#7CFC00]/30 hover:text-[#1B5E20] transition-colors', data: { action: "click->loading#show" } %>
+        <%= link_to 'ログイン', user_session_path, class: 'ml-2 px-4 py-2 bg-white text-[#2E7D32] rounded-lg font-medium hover:bg-[#F1F8E9] hover:text-[#1B5E20] transition-colors border border-[#81C784]', data: { action: "click->loading#show" } %>
+        <%= link_to 'サプリ診断', new_diagnosis_path, class: 'flex items-center gap-2 py-2 hover:bg-[#F1F8E9] rounded-md transition-colors duration-150', data: { action: "click->loading#show" } %>
       </div>
 
       <!-- モバイルメニュー（DaisyUI dropdown） -->
@@ -22,10 +22,10 @@
           </svg>
         </label>
         <ul tabindex="0" class="dropdown-content menu p-2 mt-2 shadow-lg bg-white rounded-box w-52 z-30">
-          <li><%= link_to '投稿一覧', posts_path, class: 'text-[#2E7D32] hover:bg-[#F1F8E9]', data: { action: "click->loding#show" }%></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: 'text-[#2E7D32] hover:bg-[#F1F8E9]', data: { action: "click->loding#show" } %></li>
-          <li><%= link_to 'ログイン', user_session_path, class: 'text-[#2E7D32] hover:bg-[#F1F8E9]', data: { action: "click->loding#show" } %></li>
-          <li><%= link_to 'サプリ診断', new_diagnosis_path, class: 'text-[#2E7D32] hover:bg-[#F1F8E9]', data: { action: "click->loding#show" }%></li>
+          <li><%= link_to '投稿一覧', posts_path, class: 'text-[#2E7D32] hover:bg-[#F1F8E9]', data: { action: "click->loading#show" } %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: 'text-[#2E7D32] hover:bg-[#F1F8E9]', data: { action: "click->loading#show" } %></li>
+          <li><%= link_to 'ログイン', user_session_path, class: 'text-[#2E7D32] hover:bg-[#F1F8E9]', data: { action: "click->loading#show" } %></li>
+          <li><%= link_to 'サプリ診断', new_diagnosis_path, class: 'text-[#2E7D32] hover:bg-[#F1F8E9]', data: { action: "click->loading#show" } %></li>
         </ul>
       </div>
     </div>
