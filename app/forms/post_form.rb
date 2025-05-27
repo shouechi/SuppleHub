@@ -22,9 +22,7 @@ class PostForm
     super(attributes)
   end
 
-  
-
-  #IDを取得するためのメソッド
+  # IDを取得するためのメソッド
   def id
     @post&.id
   end
@@ -67,7 +65,7 @@ class PostForm
       false
     end
   end
-   # CarrierWaveのキャッシュ対応
+  # CarrierWaveのキャッシュ対応
   def persisted?
     @post&.persisted?
   end
