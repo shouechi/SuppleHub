@@ -22,11 +22,18 @@ class PostForm
     super(attributes)
   end
 
+  
+
+  #IDを取得するためのメソッド
+  def id
+    @post&.id
+  end
+
   def save
     return false if invalid?
 
     ActiveRecord::Base.transaction do
-      post = build_post
+      post = build_post()
       post.save
       # トランザクションが成功した場合、trueを返す
       true
@@ -39,6 +46,33 @@ class PostForm
   def supplecategory
     Supplecategory.find_by(id: supplecategory_id) if supplecategory_id.present?
   end
+
+  def update(attributes = {})
+    assign_attributes(attributes) if attributes.present?
+    return false if invalid?
+
+    ActiveRecord::Base.transaction do
+      @post.update!(
+        supplecategory_id: supplecategory_id,
+        effect: effect,
+        side_effect: side_effect,
+        supple_image: supple_image,
+        supple_image_cache: supple_image_cache
+      )
+      true
+    rescue ActiveRecord::RecordInvalid => e
+      e.record.errors.each do |error|
+        errors.add(error.attribute, error.message)
+      end
+      false
+    end
+  end
+   # CarrierWaveのキャッシュ対応
+  def persisted?
+    @post&.persisted?
+  end
+
+
 
   private
 

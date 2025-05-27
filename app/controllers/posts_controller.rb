@@ -22,12 +22,12 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = PostForm.new
+    @post_form = PostForm.new
   end
 
   def create
-    @post = PostForm.new(post_params)
-    @post.user_id = current_user.id # 現在のユーザーを関連付け
+    @post_form = PostForm.new(post_params)
+    @post_form.user_id = current_user.id # 現在のユーザーを関連付け
 
     # サプリメントカテゴリの処理
     if params[:post_form][:supplecategory_id].present?
@@ -39,10 +39,10 @@ class PostsController < ApplicationController
         return
       end
 
-      @post.supplecategory_id = @supplecategory.id
+      @post_form.supplecategory_id = @supplecategory.id
     end
 
-    if @post.save
+    if @post_form.save
       redirect_to posts_path, notice: "投稿が成功しました！"
     else
       flash.now[:alert] = "投稿の作成に失敗しました"
@@ -53,30 +53,32 @@ class PostsController < ApplicationController
 
 
   def edit
-    @post = current_user.posts.find(params[:id])
+    post = current_user.posts.find(params[:id])
+    @post_form = PostForm.new(post: post)
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
+    post = current_user.posts.find(params[:id])
+    @post_form = PostForm.new(post: post)
 
-  # サプリメントカテゴリの処理
-  if params[:post][:supplecategory_id].present?
-    @supplecategory = Supplecategory.find_or_create_by(name: params[:post][:supplecategory_id])
+    # サプリメントカテゴリの処理
+    if params[:post_form][:supplecategory_id].present?
+      @supplecategory = Supplecategory.find_or_create_by(name: params[:post_form][:supplecategory_id])
 
-    unless @supplecategory.persisted?
-      flash.now[:alert] = "カテゴリの作成に失敗しました"
+      unless @supplecategory.persisted?
+        flash.now[:alert] = "カテゴリの作成に失敗しました"
+        render :edit, status: :unprocessable_entity
+      end
+    end
+
+    # 投稿の更新
+    if @post_form.update(post_params.merge(supplecategory_id: @supplecategory&.id))
+      redirect_to posts_path, notice: "更新が成功しました！"
+    else
+      flash.now[:alert] = "投稿の更新に失敗しました"
       render :edit, status: :unprocessable_entity
     end
-  end
-
-  # 投稿の更新
-  if @post.update(post_params.merge(supplecategory_id: @supplecategory&.id))
-    redirect_to posts_path, notice: "更新が成功しました！"
-  else
-    flash.now[:alert] = "投稿の更新に失敗しました"
-    render :edit, status: :unprocessable_entity
-  end
-end
+ end
 
   def show
     @post = Post.find(params[:id])

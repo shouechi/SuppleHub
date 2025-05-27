@@ -3,16 +3,16 @@
     <h2 class="text-2xl font-bold">サプリメント投稿</h2>
   </div>
 
-  <%= form_with(model: @post, url: posts_path, data: { turbo: false }, class: "space-y-4") do |f| %>
+  <%= form_with(model: @post_form, url: url, method: method, data: { turbo: false }, class: "space-y-4") do |f| %>
     <!-- エラーメッセージ -->
-    <% if @post.errors.any? %>
+    <% if @post_form.errors.any? %>
       <div class="alert alert-error shadow-lg">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
           <div>
             <h3 class="font-bold">入力エラー</h3>
             <ul class="list-disc pl-5 mt-1">
-              <% @post.errors.full_messages.each do |message| %>
+              <% @post_form.errors.full_messages.each do |message| %>
                 <li class="text-sm"><%= message %></li>
               <% end %>
             </ul>
@@ -26,7 +26,7 @@
       <%= f.label :supplecategory_id, class: "label" do %>
         <span class="label-text font-medium">サプリ名</span>
       <% end %>
-      <%= f.text_field :supplecategory_id, value: @post.supplecategory.try(:name), 
+      <%= f.text_field :supplecategory_id, value: @post_form.supplecategory.try(:name), 
                        class: "input input-bordered w-full", 
                        placeholder: "サプリメント名を入力" %>
     </div>
