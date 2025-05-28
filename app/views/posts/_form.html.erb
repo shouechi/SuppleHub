@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold">サプリメント投稿</h2>
   </div>
 
-  <%= form_with(model: @post_form, url: url, method: method, data: { turbo: false }, class: "space-y-4") do |f| %>
+  <%= form_with(model: post_form, url: url, method: method, data: { turbo: false }, class: "space-y-4") do |f| %>
     <!-- エラーメッセージ -->
     <% if @post_form.errors.any? %>
       <div class="alert alert-error shadow-lg">

@@ -20,6 +20,14 @@ class PostForm
   def initialize(attributes = {})
     @post = attributes.delete(:post)
     super(attributes)
+
+    if @post.present?
+      self.supplecategory_id = @post.supplecategory_id
+      self.effect = @post.effect
+      self.side_effect = @post.side_effect
+      self.supple_image = @post.supple_image
+      self.user_id = @post.user_id
+    end
   end
 
   # IDを取得するためのメソッド
@@ -45,9 +53,9 @@ class PostForm
     Supplecategory.find_by(id: supplecategory_id) if supplecategory_id.present?
   end
 
-  def update(attributes = {})
-    assign_attributes(attributes) if attributes.present?
-    return false if invalid?
+  def update(attributes)
+    assign_attributes(attributes)
+    return false unless valid?
 
     ActiveRecord::Base.transaction do
       @post.update!(
@@ -58,18 +66,10 @@ class PostForm
         supple_image_cache: supple_image_cache
       )
       true
-    rescue ActiveRecord::RecordInvalid => e
-      e.record.errors.each do |error|
-        errors.add(error.attribute, error.message)
-      end
+    rescue ActiveRecord::RecordInvalid
       false
     end
   end
-  # CarrierWaveのキャッシュ対応
-  def persisted?
-    @post&.persisted?
-  end
-
 
 
   private
