@@ -1,0 +1,14 @@
+name: Deployment
+on:
+  push:
+    tags:
+      - "v*"
+jobs:
+  deploy-server-production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Server
+        env:
+          deploy_url_server: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          curl "$deploy_url_server"
