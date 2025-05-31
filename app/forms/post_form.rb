@@ -6,15 +6,17 @@ class PostForm
   attribute :effect, :string
   attribute :side_effect, :string
   attribute :supple_image, :string
+  attribute :supple_image_cache, :string
   attribute :user_id, :integer
   attribute :supplecategory_id, :integer
 
   mount_uploader :supple_image, SuppleImageUploader
 
-  validates :supplecategory_id, presence: { message: "サプリ名を入力してください" }
-  validates :effect, presence: { message: "本文を入力してください" }
-  validates :side_effect, presence: { message: "本文を入力してください" }
-  validates :supple_image, presence: { message: "画像を選択してください" }
+  validates :supplecategory_id,  presence: true
+  validates :effect,  presence: true
+  validates :side_effect,  presence: true
+  validates :supple_image,  presence: false
+  validates :supple_image_cache, presence: false
 
   # モデルからの属性を取得するためのメソッド
   def initialize(attributes = {})

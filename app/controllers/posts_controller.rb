@@ -46,7 +46,7 @@ class PostsController < ApplicationController
       redirect_to posts_path, notice: "投稿が成功しました！"
     else
       flash.now[:alert] = "投稿の作成に失敗しました"
-      Rails.logger.error @post.errors.full_messages.join(", ")
+      Rails.logger.error @post_form.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity
     end
   end
