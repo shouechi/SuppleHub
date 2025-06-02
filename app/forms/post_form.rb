@@ -18,18 +18,17 @@ class PostForm
   validates :supple_image,  presence: false
   validates :supple_image_cache, presence: false
 
+  # Postモデルとの関連を定義
+  attr_reader :post
+  delegate :persisted?, to: :post, allow_nil: true
+
   # モデルからの属性を取得するためのメソッド
   def initialize(attributes = {})
-    @post = attributes.delete(:post)
+    @post = attributes.delete(:post)   # 明示的に:postキーを取得
     super(attributes)
 
-    if @post.present?
-      self.supplecategory_id = @post.supplecategory_id
-      self.effect = @post.effect
-      self.side_effect = @post.side_effect
-      self.supple_image = @post.supple_image
-      self.user_id = @post.user_id
-    end
+    # 必要に応じて既存のPostから属性を読み込み
+    load_post_attributes if @post.present?
   end
 
   # IDを取得するためのメソッド
@@ -84,5 +83,13 @@ class PostForm
       supple_image: supple_image,
       user_id: user_id
     )
+  end
+
+  def load_post_attributes
+    self.supplecategory_id = @post.supplecategory_id
+    self.effect = @post.effect
+    self.side_effect = @post.side_effect
+    self.supple_image = @post.supple_image
+    self.user_id = @post.user_id
   end
 end
