@@ -71,6 +71,25 @@ SuppleHubは、**実際に効果のあったサプリ・プロテインを共有
 
 ---
 
+### 使用技術
+
+| カテゴリ | 技術 |
+| --- | --- | 
+| フロントエンド | Ruby on Rails 7.2.2 / JavaScript / Stimulus |
+| バックエンド | Ruby 3.2.3 / Ruby on Rails 7.2.2 |
+| CSSフレームワーク | tailwindcss / daisyUI |
+| データベース | PostgreSQL |
+| 認証 | Devise / Omniauth（Google OAuth対応） |
+| Web API | Google API Openai API|
+| 環境構築 | Docker |
+| インフラ | Render.com / Redis / Amazon S3 |
+| バージョン管理ツール | GitHub |
+<br>
+
+
+
+---
+
 ### 画面遷移図
 Figma：https://www.figma.com/design/YfjhckMAA4QOLQYUShXbXG/SuppleHub-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&node-type=canvas&t=uYsBbisERXiNej5u-0
 [![Image from Gyazo](https://i.gyazo.com/5822607de891c2b555b5c6b5e1e8d111.png)](https://gyazo.com/5822607de891c2b555b5c6b5e1e8d111)
