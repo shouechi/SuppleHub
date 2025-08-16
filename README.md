@@ -40,34 +40,34 @@ SuppleHubは、**実際に効果のあったサプリ・プロテインを共有
 
 ## 機能一覧
 | ログイン機能 |
-|:-:
+|-|
 | [![Image from Gyazo](https://i.gyazo.com/f212ec5dcd1c2c22f35712fc4d412637.gif)](https://gyazo.com/f212ec5dcd1c2c22f35712fc4d412637) | 
 | Googleアカウントでログインできます。  |
 
 | 新規登録機能 |
-|:-:|
+|-|
 | [![Image from Gyazo](https://i.gyazo.com/9e7878f8ee6569f28ec81eb2ce2a0f39.gif)](https://gyazo.com/9e7878f8ee6569f28ec81eb2ce2a0f39) |
-| 名前、メールアドレス、パスワードを入力して新規登録できます。不備や入力漏れがあった場合はバリデーションでエラーが表示されます。  |
+| 名前、メールアドレス、パスワードを入力して新規登録できます。<br>不備や入力漏れがあった場合はバリデーションでエラーが表示されます。  |
 
 | 投稿機能 |
-|:-:|
+|-|
 | [![Image from Gyazo](https://i.gyazo.com/357ff05c76d4f7423b6e7a17d1d476c4.gif)](https://gyazo.com/357ff05c76d4f7423b6e7a17d1d476c4) |
-| サプリ名・効果・副作用・画像を入力して投稿できます。投稿後は編集・削除が可能です。不備や入力漏れがあった場合はバリデーションでエラーが表示されます。 |
+| サプリ名・効果・副作用・画像を入力して投稿できます。<br>投稿後は編集・削除が可能です。<br>不備や入力漏れがあった場合はバリデーションでエラーが表示されます。 |
 
 | 診断機能 |
-|:-:|
+|-|
 | [![Image from Gyazo](https://i.gyazo.com/85ae214034337392030b94042da6a522.gif)](https://gyazo.com/85ae214034337392030b94042da6a522) |
 | 健康状態・生活状況・目的意識を入力し、診断結果を確認できます。 |
 
 | コメント機能 |
-|:-:|
+|-|
 | [![Image from Gyazo](https://i.gyazo.com/09e8ad612432968de16597dc45ae365a.gif)](https://gyazo.com/09e8ad612432968de16597dc45ae365a) |
 | 各投稿にコメントでき、ActionCableを使ってリアルタイムで反映されます。 |
 
 | 詳細機能 |
-|:-:|
-| [![Image from Gyazo](https://i.gyazo.com/773e702ea3b489db1259b1bedb47a19e.jpg)](https://gyazo.com/773e702ea3b489db1259b1bedb47a19e) |
-| 各投稿の詳細を閲覧できます。X（旧Twitter）での共有、編集、削除が可能です。  |
+|-|
+| <a href="https://gyazo.com/773e702ea3b489db1259b1bedb47a19e"><img src="https://i.gyazo.com/773e702ea3b489db1259b1bedb47a19e.jpg" alt="Image from Gyazo" width="600"/></a> |
+| 各投稿の詳細を閲覧できます。<br>X（旧Twitter）での共有、編集、削除が可能です。  |
 
 ---
 
