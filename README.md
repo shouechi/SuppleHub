@@ -80,7 +80,7 @@ SuppleHubは、**実際に効果のあったサプリ・プロテインを共有
 | CSSフレームワーク | tailwindcss / daisyUI |
 | データベース | PostgreSQL |
 | 認証 | Devise / Omniauth（Google OAuth対応） |
-| Web API | Google API Openai API|
+| Web API | Google API / Openai API|
 | 環境構築 | Docker |
 | インフラ | Render.com / Redis / Amazon S3 |
 | バージョン管理ツール | GitHub |
