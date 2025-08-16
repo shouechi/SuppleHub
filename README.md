@@ -39,21 +39,35 @@ SuppleHubは、**実際に効果のあったサプリ・プロテインを共有
 ---
 
 ## 機能一覧
-| ログイン機能 | 新規登録機能 |
-|:-:|:-:|
-| [![Image from Gyazo](https://i.gyazo.com/f212ec5dcd1c2c22f35712fc4d412637.gif)](https://gyazo.com/f212ec5dcd1c2c22f35712fc4d412637) | [![Image from Gyazo](https://i.gyazo.com/9e7878f8ee6569f28ec81eb2ce2a0f39.gif)](https://gyazo.com/9e7878f8ee6569f28ec81eb2ce2a0f39) |
-| Googleでログインできるようにしています。 | 名前、メールアドレス、パスワードを入力することで登録することができる。記入漏れなどがあった場合のバリデーションも行なっています。 |
+| ログイン機能 |
+|:-:
+| [![Image from Gyazo](https://i.gyazo.com/f212ec5dcd1c2c22f35712fc4d412637.gif)](https://gyazo.com/f212ec5dcd1c2c22f35712fc4d412637) | 
+| Googleアカウントでログインできます。  |
 
-| 投稿機能 | 診断機能 |
-|:-:|:-:|
-| [![Image from Gyazo](https://i.gyazo.com/357ff05c76d4f7423b6e7a17d1d476c4.gif)](https://gyazo.com/357ff05c76d4f7423b6e7a17d1d476c4) | [![Image from Gyazo](https://i.gyazo.com/85ae214034337392030b94042da6a522.gif)](https://gyazo.com/85ae214034337392030b94042da6a522) |
-| サプリ名・効果・副作用・画像を記入することで投稿することができます。また、編集・削除なども行うことができます。記入漏れなどがあった場合のバリデーションも行なっている。 | 健康状態・生活状況・目的意識に記入することで診断を行います。 |
+| 新規登録機能 |
+|:-:|
+| [![Image from Gyazo](https://i.gyazo.com/9e7878f8ee6569f28ec81eb2ce2a0f39.gif)](https://gyazo.com/9e7878f8ee6569f28ec81eb2ce2a0f39) |
+| 名前、メールアドレス、パスワードを入力して新規登録できます。不備や入力漏れがあった場合はバリデーションでエラーが表示されます。  |
 
-| コメント機能 | 詳細機能 |
-|:-:|:-:|
-| [![Image from Gyazo](https://i.gyazo.com/4533b7dcf5ed2c5617cb4140c55bcd27.gif)](https://gyazo.com/4533b7dcf5ed2c5617cb4140c55bcd27) | [![Image from Gyazo](https://i.gyazo.com/85ae214034337392030b94042da6a522.gif)](https://gyazo.com/85ae214034337392030b94042da6a522) |
-| 各投稿にコメントをすることができ、ActionCableを使用しているためリアルタイムでコメントを確認することができます。また、通知機能でも確認できます。 | 各投稿の詳細情報を確認できます。X共有できる機能、編集・削除を行うこともできます。 |
+| 投稿機能 |
+|:-:|
+| [![Image from Gyazo](https://i.gyazo.com/357ff05c76d4f7423b6e7a17d1d476c4.gif)](https://gyazo.com/357ff05c76d4f7423b6e7a17d1d476c4) |
+| サプリ名・効果・副作用・画像を入力して投稿できます。投稿後は編集・削除が可能です。不備や入力漏れがあった場合はバリデーションでエラーが表示されます。 |
 
+| 診断機能 |
+|:-:|
+| [![Image from Gyazo](https://i.gyazo.com/85ae214034337392030b94042da6a522.gif)](https://gyazo.com/85ae214034337392030b94042da6a522) |
+| 健康状態・生活状況・目的意識を入力し、診断結果を確認できます。 |
+
+| コメント機能 |
+|:-:|
+| [![Image from Gyazo](https://i.gyazo.com/09e8ad612432968de16597dc45ae365a.gif)](https://gyazo.com/09e8ad612432968de16597dc45ae365a) |
+| 各投稿にコメントでき、ActionCableを使ってリアルタイムで反映されます。 |
+
+| 詳細機能 |
+|:-:|
+| [![Image from Gyazo](https://i.gyazo.com/773e702ea3b489db1259b1bedb47a19e.jpg)](https://gyazo.com/773e702ea3b489db1259b1bedb47a19e) |
+| 各投稿の詳細を閲覧できます。X（旧Twitter）での共有、編集、削除が可能です。  |
 
 ---
 
