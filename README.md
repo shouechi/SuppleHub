@@ -1,4 +1,7 @@
 # SuppleHub
+<a href="https://gyazo.com/ced6d8da2cd4da2da89227d089b96bf2"><img src="https://i.gyazo.com/ced6d8da2cd4da2da89227d089b96bf2.jpg" alt="Image from Gyazo" width="800"/></a>
+<br>アプリケーションURL:[SuppleHub](https://supplehub.jp)
+
 ## サービス概要
 SuppleHubは、**実際に効果のあったサプリ・プロテインを共有するサービス**です。ユーザーが自身の体験を投稿したり、他のユーザーのレビューや情報を参考にして、信頼性の高いサプリ・プロテインを見つけることができます。また、現在使用中のサプリ・プロテインを管理する機能も提供します。
 
@@ -92,10 +95,10 @@ SuppleHubは、**実際に効果のあったサプリ・プロテインを共有
 
 ### 画面遷移図
 Figma：https://www.figma.com/design/YfjhckMAA4QOLQYUShXbXG/SuppleHub-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&node-type=canvas&t=uYsBbisERXiNej5u-0
-[![Image from Gyazo](https://i.gyazo.com/5822607de891c2b555b5c6b5e1e8d111.png)](https://gyazo.com/5822607de891c2b555b5c6b5e1e8d111)
+[![Image from Gyazo](https://i.gyazo.com/65997661e6a3493234126fe4a5884533.png)](https://gyazo.com/65997661e6a3493234126fe4a5884533)
 
 ---
 
 ### ER図
 ER図 : https://dbdiagram.io/d/SupppleHub-675acad546c15ed4792a37b0
-[![Image from Gyazo](https://i.gyazo.com/d8793632d928a459f6302b249cb9b10c.png)](https://gyazo.com/d8793632d928a459f6302b249cb9b10c)
+[![Image from Gyazo](https://i.gyazo.com/00cb86a404bef5e40eaed7354ae878a4.png)](https://gyazo.com/00cb86a404bef5e40eaed7354ae878a4)
