@@ -54,7 +54,7 @@ SuppleHubは、**実際に効果のあったサプリ・プロテインを共有
 
 | 投稿機能 |
 |-|
-| [![Image from Gyazo](https://i.gyazo.com/e4624b618c711f646eb03e2fa6cb8a24.gif)](https://gyazo.com/e4624b618c711f646eb03e2fa6cb8a24) |
+| [![Image from Gyazo](https://i.gyazo.com/77fbe596be04ec0ea378212b16761ff0.gif)](https://gyazo.com/77fbe596be04ec0ea378212b16761ff0) |
 | サプリ名・効果・副作用・画像を入力して投稿できます。<br>投稿後は編集・削除が可能です。<br>不備や入力漏れがあった場合はバリデーションでエラーが表示されます。 |
 
 | 診断機能 |
