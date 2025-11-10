@@ -1,16 +1,37 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="loading"
 export default class extends Controller {
-  static targets = ["spinner"] 
+  static targets = ["spinner"]
+
   connect() {
-    this.hide()
+    if (this.hasSpinnerTarget) {
+      this.hide()
+    }
   }
+
+  check(event) {
+    const form = event.currentTarget
+    const inputs = form.querySelectorAll("textarea[required]")
+    let allFilled = true
+    inputs.forEach(input => {
+      if (input.value.trim() === "") {
+        allFilled = false
+      }
+    })
+    if (!allFilled) {
+      event.preventDefault()
+      this.hide()
+      alert("必須項目を入力してください")
+    } else {
+      this.show()
+    }
+  }
+
   show() {
-    this.spinnerTarget.classList.remove("hidden")
+    if (this.hasSpinnerTarget) this.spinnerTarget.classList.remove("hidden")
   }
 
   hide() {
-    this.spinnerTarget.classList.add("hidden")
+    if (this.hasSpinnerTarget) this.spinnerTarget.classList.add("hidden")
   }
 }
