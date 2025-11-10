@@ -28,7 +28,7 @@
             以下の質問にできるだけ詳しくお答えください。
           </p>
           
-          <%= form_with(url: diagnoses_path, method: :post, local: true, class: "space-y-6") do |form| %>
+          <%= form_with(url: diagnoses_path, method: :post, local: true, class: "space-y-6", data: { action: "submit->loading#check" }) do |form| %>
             <div class="form-control">
               <%= form.label :health_condition, '健康状態', class: "label font-medium" %>
               <div class="label">
@@ -54,7 +54,7 @@
             </div>
             
             <div class="form-control mt-8">
-              <%= form.submit '診断する', class: "btn btn-primary w-full", data: { action: "click->loading#show" } %>
+              <%= form.submit '診断する', class: "btn btn-primary w-full" %>
             </div>
           <% end %>
         <% end %>
